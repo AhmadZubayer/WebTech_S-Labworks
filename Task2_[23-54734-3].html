@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <h1><u>Student Registration Form</u></h1>
+    <hr>
+
+    <form>
+        <label for="fullname"><b>Full Name:</b></label><br>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name" required><br><br>
+
+        <label for="email"><b>Email Address:</b></label><br>
+        <input type="email" id="email" name="email" placeholder="Enter Email" required><br><br>
+
+        <label for="password"><b>Password:</b></label><br>
+        <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+
+        <hr>
+
+        <label><b>Select Gender:</b></label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br>
+
+        <hr>
+
+        <label><b>Select Skills:</b></label><br>
+        <input type="checkbox" id="webdev" name="skills" value="webdev" required>
+        <label for="webdev">Web Development</label><br>
+        <input type="checkbox" id="dataanalysis" name="skills" value="dataanalysis" required>
+        <label for="dataanalysis">Data Analysis</label><br>
+        <input type="checkbox" id="mlai" name="skills" value="mlai" required>
+        <label for="mlai">Machine Learning and AI</label><br>
+        <input type="checkbox" id="uiux" name="skills" value="uiux" required>
+        <label for="uiux">UI/UX & Graphics Design</label><br>
+        <input type="checkbox" id="contentwriting" name="skills" value="contentwriting" required>
+        <label for="contentwriting">Content Writing</label><br>
+        <input type="checkbox" id="communication" name="skills" value="communication" required>
+        <label for="communication">Communication</label><br>
+        <input type="checkbox" id="problemsolving" name="skills" value="problemsolving" required>
+        <label for="problemsolving">Problem Solving</label><br><br>
+
+        <hr>
+
+        <label for="department"><b>Select Department:</b></label>
+        <br>
+        <select id="department" name="department" required>
+            <option value=""> Select Department</option>
+            <option value="cse">Computer Science & Engineering</option>
+            <option value="eee">Electrical & Electronics Engineering</option>
+            <option value="ipe">Industrial Engineering</option>
+            <option value="mecha">Pharmacy</option>
+            <option value="bba">Business Administration</option>
+            <option value="eng">English</option>
+        </select>
+        <br><br>
+
+        <hr>
+
+        <label for="message"><b>Message:</b></label><br>
+        <textarea id="message" name="message" rows="5" cols="50" placeholder="Type Here..." required></textarea>
+        <br><br>
+
+        <hr>
+
+        <button type="submit">Submit Form</button>
+    </form>
+
+    <hr>
+
+    <footer>
+        <p>2026 Student Registration System. All rights reserved.</p>
+        <p>Developed by <a href="https://github.com/AhmadZubayer">Ahmad Zubayer [23-54734-3]</a></p>
+    </footer>
+</body>
+</html>
