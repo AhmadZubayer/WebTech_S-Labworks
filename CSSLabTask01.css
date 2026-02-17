@@ -1,0 +1,18 @@
+/* UNIVERSAL SELECTOR */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: antiquewhite;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+p {
+    font-size: 20px;
+    color: black;
+}
+#mainTitle {
+    color: blueviolet;
+}
+.highlight{
+    background-color: burlywood;
+}

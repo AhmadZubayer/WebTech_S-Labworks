@@ -1,0 +1,54 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#bio-box{
+    display: inline-block;
+    width: 300px;
+    height: 150px;
+    padding: 20px;
+    border: 5px solid #3498db;
+    margin: 20px;
+    background-color: #ecf0f1;
+    vertical-align: top;
+}
+
+#edu-box{
+    display: inline-block;
+    width: 450px;
+    height: 280px;
+    padding: 30px;
+    border: 8px dotted #e74c3c;
+    margin: 30px;
+    background-color: #fdecea;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+
+
+#edu-box table {
+    width: 100%;
+    font-size: 0.7em;
+    border-collapse: collapse;
+}
+
+
+#form-box{
+    display: inline-block;
+    width: 400px;
+    height: auto;
+    padding: 15px;
+    border: 3px dashed #27ae60;
+    margin: 15px;
+    background-color: #eafaf1;
+    vertical-align: top;
+}
+
+#line-1 {
+    display: none;
+}
+
+#line-2 {
+    visibility: hidden;
+}
