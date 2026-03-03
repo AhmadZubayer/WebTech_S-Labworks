@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Lab Task 03 - Arrays and Objects</title>
+</head>
+<body>
+ 
+<h1>JavaScript Lab Task 03</h1>
+<script>
+    
+    var courses = ["Web Tech", "DS", "Database", "Software Engineering", "Operating System"];
+    
+    document.write("<h4>Course Names:</h4>");
+    document.write("<ul>");
+    for (var i = 0; i < courses.length; i++) {
+        document.write("<li>" + courses[i] + "</li>");
+    }
+    document.write("</ul>");
+    
+    courses.push("Computer Networks");
+    
+    document.write("<h4>Updated Course List:</h4>");
+    document.write("<ul>");
+    for (var i = 0; i < courses.length; i++) {
+        document.write("<li>" + courses[i] + "</li>");
+    }
+    document.write("</ul>");
+    
+    
+    var arrayLength = courses.length;
+    document.write("<p>Array Length: " + arrayLength + "</p>");
+    
+    var removedElement = courses.pop();
+    document.write("<p>Removed Last Element: " + removedElement + "</p>");
+    
+    courses.unshift("Artificial Intelligence");
+    document.write("<p>Added at Beginning: Artificial Intelligence</p>");
+    
+    document.write("<h4>Final Array Contents:</h4>");
+    document.write("<ul>");
+    for (var i = 0; i < courses.length; i++) {
+        document.write("<li>" + courses[i] + "</li>");
+    }
+    document.write("</ul>");
+    
+    
+    
+    var student = {
+        name: "Ahmad Zubayer Rahman",
+        id: "21-44321-2",
+        department: "Computer Science",
+        cgpa: 3.85
+    };
+    
+    document.write(" <hr>");
+    document.write("<p>Name: " + student.name + "</p>");
+    document.write("<p>ID: " + student.id + "</p>");
+    document.write("<p>Department: " + student.department + "</p>");
+    document.write("<p>CGPA: " + student.cgpa + "</p>");
+    document.write("</div>");
+    document.write(" <hr>");
+
+    
+    
+    
+    var students = [
+        {
+            name: "Ahmad Zubayer",
+            id: "23-54734-3",
+            department: "Computer Science",
+            cgpa: 3.9
+        },
+        {
+            name: "Naveed",
+            id: "23-54710-3",
+            department: "Software Engineering",
+            cgpa: 3.92
+        },
+        {
+            name: "Afnan Ahmed",
+            id: "23-54727-3",
+            department: "Computer Science",
+            cgpa: 3.67
+        }
+    ];
+    
+    document.write("<h4>Student Information:</h4>");
+    
+    for (var i = 0; i < students.length; i++) {
+        document.write("<h5>Student " + (i + 1) + "</h5>");
+        document.write("<p>Name: " + students[i].name + "</p>");
+        document.write("<p>ID: " + students[i].id + "</p>");
+        document.write("<p>Department: " + students[i].department + "</p>");
+        document.write("<p>CGPA: " + students[i].cgpa + "</p>");
+        document.write("</div> <hr>");
+    }
+</script>
+</body>
+</html>
