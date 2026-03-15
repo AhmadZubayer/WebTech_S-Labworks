@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Student Manager</h2>
+
+    <label for="searchInput">Search:</label>
+    <input type="text" id="searchInput" placeholder="Search student">
+    <br>
+    <hr>
+
+    <h4>Enter Student Information: </h4>
+    <label for="nameInput">Student Name:</label>
+    <input type="text" id="nameInput" placeholder="Student Name">
+    <br>
+    <br>
+    <label for="idInput">ID:</label>
+    <input type="text" id="idInput" placeholder="id No.">
+    <br>
+    <br>
+    <button id="addBtn" disabled>Add</button>
+    <button id="sortBtn">Sort A–Z</button>
+    <button id="highlightBtn">Highlight First Student</button>
+    <br>
+    <hr>
+
+    <h4>Detailed Student List: </h4>
+    <ul id="studentList"></ul>
+
+    <p id="totalCount">Total students: 0</p>
+    <p id="attendanceCount">Present: 0, Absent: 0</p>
+
+    <script>
+        let nameInput = document.getElementById('nameInput');
+        let idInput = document.getElementById('idInput');
+        let addBtn = document.getElementById('addBtn');
+        let sortBtn = document.getElementById('sortBtn');
+        let highlightBtn = document.getElementById('highlightBtn');
+        let studentList = document.getElementById('studentList');
+        let totalCount = document.getElementById('totalCount');
+        let attendanceCount = document.getElementById('attendanceCount');
+        let searchInput = document.getElementById('searchInput');
+
+        nameInput.addEventListener('input', function () {
+            addBtn.disabled = nameInput.value === '';
+        });
+
+        function updateTotal() {
+            let items = studentList.getElementsByTagName('li');
+            totalCount.textContent = 'Total students: ' + items.length;
+        }
+
+        function updateAttendance() {
+            let items = studentList.getElementsByTagName('li');
+            let present = 0;
+            let absent = 0;
+            for (let i = 0; i < items.length; i++) {
+                let box = items[i].querySelector('input[type=checkbox]');
+                if (box && box.checked) {
+                    present++;
+                } else {
+                    absent++;
+                }
+            }
+            attendanceCount.textContent = 'Present: ' + present + ', Absent: ' + absent;
+        }
+
+        function applySearch() {
+            let query = searchInput.value.toLowerCase();
+            let items = studentList.getElementsByTagName('li');
+            for (let i = 0; i < items.length; i++) {
+                let studentCol = items[i].querySelector('.studentName');
+                if (studentCol.textContent.toLowerCase().indexOf(query) !== -1) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        }
+
+        searchInput.addEventListener('input', applySearch);
+
+        function createStudentItem(name, id) {
+            let li = document.createElement('li');
+
+            let studentCol = document.createElement('span');
+            studentCol.className = 'studentName';
+            studentCol.textContent = id + ' – ' + name;
+
+            let presentbox = document.createElement('input');
+            presentbox.type = 'checkbox';
+            presentbox.addEventListener('change', function () {
+                if (presentbox.checked) {
+                    li.style.backgroundColor = 'lightgreen';
+                } else {
+                    li.style.backgroundColor = '';
+                }
+                updateAttendance();
+            });
+
+            let presentLabel = document.createElement('label');
+            presentLabel.textContent = ' Present';
+
+            let editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            editBtn.addEventListener('click', function () {
+                let newName = prompt('Enter new name:', name);
+                if (newName === null) return;
+                let newid = prompt('Enter new id number:', id);
+                if (newid === null) return;
+                name = newName;
+                id = newid;
+                studentCol.textContent = id + ' – ' + name;
+                applySearch();
+            });
+
+            let deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.addEventListener('click', function () {
+                if (confirm('Are you sure you want to delete this student?')) {
+                    studentList.removeChild(li);
+                    updateTotal();
+                    updateAttendance();
+                }
+            });
+
+            li.appendChild(studentCol);
+            li.appendChild(presentbox);
+            li.appendChild(presentLabel);
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+
+            return li;
+        }
+
+        addBtn.addEventListener('click', function () {
+            let name = nameInput.value;
+            let id = idInput.value;
+            if (name === '') return;
+            let li = createStudentItem(name, id);
+            studentList.appendChild(li);
+            nameInput.value = '';
+            idInput.value = '';
+            addBtn.disabled = true;
+            updateTotal();
+            updateAttendance();
+            applySearch();
+        });
+
+        sortBtn.addEventListener('click', function () {
+            let items = Array.prototype.slice.call(studentList.getElementsByTagName('li'));
+            items.sort(function (a, b) {
+                let nameA = a.querySelector('.studentName').textContent.toLowerCase();
+                let nameB = b.querySelector('.studentName').textContent.toLowerCase();
+                return nameA.localeCompare(nameB);
+            });
+            for (let i = 0; i < items.length; i++) {
+                studentList.appendChild(items[i]);
+            }
+        });
+
+        highlightBtn.addEventListener('click', function () {
+            let items = studentList.getElementsByTagName('li');
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.backgroundColor = '';
+            }
+            if (items.length > 0) {
+                items[0].style.backgroundColor = 'yellow';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
