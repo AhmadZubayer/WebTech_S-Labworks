@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Zubayer - Portfolio</title>
+    <link rel="stylesheet" href="Portfolio.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ahmad Zubayer Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="themeToggle" class="theme-btn"><img src="portfolio-imgs/night-mode.png" alt="Toggle Theme"></button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home">
+            <div class="home-content">
+                <div class="home-left">
+                    <p class="intro">A motivated Computer Science undergraduate from American International University-Bangladesh with strong .NET and full-stack web development skills.</p>
+                    <div class="skills-section">
+                        <h3>Skills</h3>
+                        <div class="skill-category">
+                            <h4>Software Development</h4>
+                            <p>Skilled in React JS, Next JS, Express Js Mongo DB, Postgress SQL. ASP.NET Core</p>
+                            <p>Familar With Java, Spirng Boot, MySQL, Django</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>AI/ML Research</h4>
+                            <p>Experienced with TensorFlow, PyTorch, Keras, Scikit-learn, OpenCV</p>
+                            <p>Knowledge of Deep Learning, Natural Language Processing, Computer Vision, Machine Learning Models</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-right">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQHmiV3ogFKUAA/profile-displayphoto-shrink_200_200/B56Za61wCDH0Ac-/0/1746891375714?e=1775692800&v=beta&t=Dyg6GgKetV1GKQs4493fyVJ-7YF5lBT3XpVJbUe7svQ" alt="Profile" class="profile-pic">
+                    <h1>Ahmad Zubayer</h1>
+                    <p class="tagline" id="typing-text">Full-Stack Developer</p>
+                    <p class="find-me-label">Find me on</p>
+                    <div class="social-links">
+                        <a href="https://github.com/AhmadZubayer" target="_blank" class="social-icon">
+                            <img src="portfolio-imgs/github-logo.png" alt="GitHub">
+                        </a>
+                        <a href="https://www.linkedin.com/in/ahmadzubayer007/" target="_blank" class="social-icon">
+                            <img src="portfolio-imgs/linkedin-logo.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>My Projects</h2>
+            <div class="filter-btns">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="aspnet">ASP.NET Core</button>
+                <button class="filter-btn" data-filter="java">Java</button>
+            </div>
+            <div class="projects-container" id="projectsContainer"></div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-wrapper">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <span class="error-msg" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                        <span class="error-msg" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject" required>
+                        <span class="error-msg" id="subjectError"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                        <span class="error-msg" id="messageError"></span>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                    <div id="successMsg" class="success-msg"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="back-to-top-container">
+        <a href="#home" class="back-to-top-btn">Back to Top</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ahmad Zubayer. All rights reserved.</p>
+    </footer>
+
+    <button id="scrollToTop" class="scroll-to-top">↑</button>
+
+    <script src="Portfolio.js"></script>
+</body>
+</html>
