@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register </title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="header-title">Register</h1>
+        </div>
+
+      
+
+        <form action="register.php" method="POST">
+            <div class="form-group full-width">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Full Name" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                    <option value="">Select a role</option>
+                    <option value="student">Student</option>
+                    <option value="parent">Parent</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="professional">Professional</option>
+                </select>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms_accepted" required>
+                <label for="terms" class="checkbox-label">I agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+
+            <div class="footer-text">
+                Already have an account? <a href="login.html" class="footer-link">Sign in</a>
+            </div>
+        </form>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - User Authentication System</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="header-title">Sign In</h1>
+        </div>
+
+        <p class="subtitle">Welcome back! Please sign in to continue.</p>
+
+        <div id="login-message" class="alert" hidden></div>
+
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember" name="remember_me">
+                <label for="remember" class="checkbox-label">Remember me</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Sign In</button>
+
+            <div class="footer-text">
+                Don't have an account? <a href="register.html" class="footer-link">Sign up</a>
+            </div>
+        </form>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

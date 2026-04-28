@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #4169e1;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.logout-btn {
+    background-color: white;
+    color: #4169e1;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+.dashboard-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 18px;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #4169e1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: white;
+}
+
+.welcome-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+    color: #757575;
+    font-size: 14px;
+}
+
+.info-section {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.info-value {
+    color: #666;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px;
+}
+
+.logout-btn {
+    background-color: white;
+    color: #4169e1;
+    border: 1px solid #4169e1;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #4169e1;
+    color: white;
+}
+
+
