@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const controllerPath = '../controller/bookController.php';
 
-  
-    fetchBooks(); 
+    fetchBooks();
 
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     const addBookForm = document.getElementById('add-book-form');
     if (addBookForm) {
         addBookForm.addEventListener('submit', (e) => {
@@ -36,55 +34,60 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(addBookForm);
             formData.append('action', 'add');
 
-            fetch(controllerPath, {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                const messageDiv = document.getElementById('add-book-message');
-                messageDiv.textContent = data.message;
-                messageDiv.style.color = data.status === 'success' ? 'green' : 'red';
-                
-                if (data.status === 'success') {
-                    addBookForm.reset();
-                    setTimeout(() => {
-                        messageDiv.textContent = '';
-                        showSection('browse-section');
-                        fetchBooks();
-                    }, 1500);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                if (xhttp.status >= 200 && xhttp.status < 300) {
+                    var data = JSON.parse(xhttp.responseText);
+                    const messageDiv = document.getElementById('add-book-message');
+                    messageDiv.textContent = data.message;
+                    messageDiv.style.color = data.status === 'success' ? 'green' : 'red';
+
+                    if (data.status === 'success') {
+                        addBookForm.reset();
+                        setTimeout(() => {
+                            messageDiv.textContent = '';
+                            showSection('browse-section');
+                            fetchBooks();
+                        }, 1500);
+                    }
                 }
-            });
+            };
+            xhttp.open('POST', controllerPath, true);
+            xhttp.send(formData);
         });
     }
 
     function fetchBooks() {
-        fetch(`${controllerPath}?action=fetch_all`)
-        .then(res => res.json())
-        .then(data => {
-            const list = document.getElementById('books-list');
-            list.innerHTML = '';
-            
-            if (data.status === 'success' && data.data.length > 0) {
-                data.data.forEach(book => {
-                    list.innerHTML += `
-                        <tr>
-                            <td>${book.id}</td>
-                            <td>${book.title}</td>
-                            <td>${book.author}</td>
-                            <td>${book.category}</td>
-                            <td>${book.availability}</td>
-                            <td>
-                                <button class="action-btn edit-btn" onclick="editBook(${book.id})">Edit</button>
-                                <button class="action-btn delete-btn" onclick="deleteBook(${book.id})">Delete</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-            } else {
-                list.innerHTML = '<tr><td colspan="6" style="text-align:center;">No books found.</td></tr>';
+        var xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            if (xhttp.status >= 200 && xhttp.status < 300) {
+                var data = JSON.parse(xhttp.responseText);
+                const list = document.getElementById('books-list');
+                list.innerHTML = '';
+
+                if (data.status === 'success' && data.data.length > 0) {
+                    data.data.forEach(book => {
+                        list.innerHTML += `
+                            <tr>
+                                <td>${book.id}</td>
+                                <td>${book.title}</td>
+                                <td>${book.author}</td>
+                                <td>${book.category}</td>
+                                <td>${book.availability}</td>
+                                <td>
+                                    <button class="action-btn edit-btn" onclick="editBook(${book.id})">Edit</button>
+                                    <button class="action-btn delete-btn" onclick="deleteBook(${book.id})">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                } else {
+                    list.innerHTML = '<tr><td colspan="6" style="text-align:center;">No books found.</td></tr>';
+                }
             }
-        });
+        };
+        xhttp.open('GET', `${controllerPath}?action=fetch_all`, true);
+        xhttp.send();
     }
 
     window.deleteBook = (id) => {
@@ -93,37 +96,43 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('action', 'delete');
             formData.append('id', id);
 
-            fetch(controllerPath, {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    fetchBooks();
-                } else {
-                    alert(data.message);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                if (xhttp.status >= 200 && xhttp.status < 300) {
+                    var data = JSON.parse(xhttp.responseText);
+                    if (data.status === 'success') {
+                        fetchBooks();
+                    } else {
+                        alert(data.message);
+                    }
                 }
-            });
+            };
+            xhttp.open('POST', controllerPath, true);
+            xhttp.send(formData);
         }
     };
 
     window.editBook = (id) => {
-        fetch(`${controllerPath}?action=fetch_single&id=${id}`)
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                const book = data.data;
-                document.getElementById('update-id').value = book.id;
-                document.getElementById('update-title').value = book.title;
-                document.getElementById('update-author').value = book.author;
-                document.getElementById('update-category').value = book.category;
-                document.getElementById('update-availability').value = book.availability;
-                
-                showSection('update-book-section');
+        var xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            if (xhttp.status >= 200 && xhttp.status < 300) {
+                var data = JSON.parse(xhttp.responseText);
+                if (data.status === 'success') {
+                    const book = data.data;
+                    document.getElementById('update-id').value           = book.id;
+                    document.getElementById('update-title').value        = book.title;
+                    document.getElementById('update-author').value       = book.author;
+                    document.getElementById('update-category').value     = book.category;
+                    document.getElementById('update-availability').value = book.availability;
+
+                    showSection('update-book-section');
+                }
             }
-        });
+        };
+        xhttp.open('GET', `${controllerPath}?action=fetch_single&id=${id}`, true);
+        xhttp.send();
     };
+
 
     const updateBookForm = document.getElementById('update-book-form');
     if (updateBookForm) {
@@ -132,24 +141,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(updateBookForm);
             formData.append('action', 'update');
 
-            fetch(controllerPath, {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                const messageDiv = document.getElementById('update-book-message');
-                messageDiv.textContent = data.message;
-                messageDiv.style.color = data.status === 'success' ? 'green' : 'red';
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                if (xhttp.status >= 200 && xhttp.status < 300) {
+                    var data = JSON.parse(xhttp.responseText);
+                    const messageDiv = document.getElementById('update-book-message');
+                    messageDiv.textContent = data.message;
+                    messageDiv.style.color = data.status === 'success' ? 'green' : 'red';
 
-                if (data.status === 'success') {
-                    setTimeout(() => {
-                        messageDiv.textContent = '';
-                        showSection('browse-section');
-                        fetchBooks();
-                    }, 1500);
+                    if (data.status === 'success') {
+                        setTimeout(() => {
+                            messageDiv.textContent = '';
+                            showSection('browse-section');
+                            fetchBooks();
+                        }, 1500);
+                    }
                 }
-            });
+            };
+            xhttp.open('POST', controllerPath, true);
+            xhttp.send(formData);
         });
     }
 
